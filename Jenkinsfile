@@ -27,12 +27,10 @@ pipeline {
         }
       }
     }
-    stage('Deployments') {
-        stage('Deploy to staging'){
-          steps {
-            sh "scp -i /home/jenkins/.ssh/id_rsa_j **/target/*.war ec2-user@${params.tomcat_dev}:/var/lib/tomcat7/webapps"
-          } 
-        }
+    stage('Deploy to staging'){
+      steps {
+        sh "scp -i /home/jenkins/.ssh/id_rsa_j **/target/*.war ec2-user@${params.tomcat_dev}:/var/lib/tomcat7/webapps"
+      } 
     }
   }
 }
