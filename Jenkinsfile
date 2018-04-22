@@ -29,7 +29,7 @@ pipeline {
     }
     stage('Deploy to staging'){
       steps {
-        sshagent (credentials: ['ec2-user']) {
+        sshagent (credentials: ['ec2-staging']) {
           sh 'ssh -o StrictHostKeyChecking=no ec2-user@${params.staging_server} uname -a'
         }  
       } 
