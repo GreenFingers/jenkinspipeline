@@ -30,7 +30,7 @@ pipeline {
     stage('Deploy to staging'){
       steps {
         sshagent (credentials: ['ec2-staging']) {
-          sh "scp -o StrictHostKeyChecking=no **/target/*.war ec2-user@18.184.0.134:~/"
+          sh "scp -o StrictHostKeyChecking=no **/target/*.war ec2-user@${params.staging_server}:~/"
         }  
       } 
     }
